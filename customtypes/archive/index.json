@@ -1,0 +1,48 @@
+{
+  "format": "custom",
+  "id": "archive",
+  "label": "archive",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "potpotpot": {
+        "type": "Group",
+        "config": {
+          "label": "potpotpot",
+          "repeat": true,
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "name",
+                "placeholder": "name"
+              }
+            },
+            "price": {
+              "type": "Number",
+              "config": {
+                "label": "price",
+                "placeholder": "price"
+              }
+            },
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
