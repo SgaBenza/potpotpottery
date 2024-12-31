@@ -121,17 +121,6 @@ interface HomepageDocumentData {
   hero: prismic.ImageField<never>
 
   /**
-   * contact field in *homepage*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.contact
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  contact: prismic.Repeatable<prismic.LinkField>
-
-  /**
    * products field in *homepage*
    *
    * - **Field Type**: Group
@@ -141,6 +130,39 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   products: prismic.GroupField<Simplify<HomepageDocumentDataProductsItem>>
+
+  /**
+   * website field in *homepage*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.website
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  website: prismic.LinkField
+
+  /**
+   * instagram field in *homepage*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField
+
+  /**
+   * facebook field in *homepage*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.facebook
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  facebook: prismic.LinkField
 }
 
 /**
