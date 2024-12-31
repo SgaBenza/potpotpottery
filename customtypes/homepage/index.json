@@ -10,7 +10,10 @@
         "type": "Image",
         "config": {
           "label": "hero",
-          "constraint": {},
+          "constraint": {
+            "width": 1440,
+            "height": 654
+          },
           "thumbnails": []
         }
       },
