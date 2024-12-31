@@ -3,6 +3,7 @@ import { createClient } from '@/prismicio'
 import { Pot } from '@/types'
 import { asLink } from '@prismicio/client'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default async function Home() {
   const client = createClient()
@@ -40,7 +41,10 @@ export default async function Home() {
 
         <PotsList pots={pots} />
 
-        <div className="text-center my-4">Discover all</div>
+        <Link href="/archive">
+          <div className="text-center my-4 hover-items">Discover all</div>
+          {/* <div className="text-center my-4 bg-transparent hover:bg-gray-50 transition-all duration-300">Discover all</div> */}
+        </Link>
         <footer className="flex justify-between my-4">
           <a href={asLink(website) as string} target="_blank">
             PotPotPottery

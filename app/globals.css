@@ -7,3 +7,9 @@ body {
   font-weight: bold;
   font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
 }
+
+@layer utilities {
+  .hover-items {
+    @apply bg-transparent hover:bg-gray-50 transition-all duration-300 cursor-pointer;
+  }
+}
