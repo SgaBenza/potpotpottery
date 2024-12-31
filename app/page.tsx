@@ -1,4 +1,6 @@
+import { PotsList } from '@/components/PotsList'
 import { createClient } from '@/prismicio'
+import { Pot } from '@/types'
 import { asLink } from '@prismicio/client'
 import Image from 'next/image'
 
@@ -7,6 +9,11 @@ export default async function Home() {
 
   const page = await client.getSingle('homepage')
   const { facebook, hero, instagram, products, website } = page.data
+  const pots: Pot[] = products.map(({ image, name, price }) => ({
+    image: image as Pot['image'],
+    name: name as Pot['name'],
+    price: price as Pot['price'],
+  }))
 
   return (
     <div>
@@ -30,7 +37,8 @@ export default async function Home() {
           <div>PotPotPottery</div>
           <div className="text-stone">Potteries by Leonardo Romano</div>
         </div>
-        <div className="bg-red-300 h-96"></div>
+
+        <PotsList pots={pots} />
 
         <div className="text-center my-4">Discover all</div>
         <footer className="flex justify-between my-4">
