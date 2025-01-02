@@ -71,6 +71,59 @@ export type ArchiveDocument<Lang extends string = string> = prismic.PrismicDocum
 >
 
 /**
+ * Content for footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * website field in *footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.website
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  website: prismic.LinkField
+
+  /**
+   * instagram field in *footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField
+
+  /**
+   * facebook field in *footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.facebook
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  facebook: prismic.LinkField
+}
+
+/**
+ * footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+  Simplify<FooterDocumentData>,
+  'footer',
+  Lang
+>
+
+/**
  * Item in *homepage → products*
  */
 export interface HomepageDocumentDataProductsItem {
@@ -180,7 +233,7 @@ export type HomepageDocument<Lang extends string = string> = prismic.PrismicDocu
   Lang
 >
 
-export type AllDocumentTypes = ArchiveDocument | HomepageDocument
+export type AllDocumentTypes = ArchiveDocument | FooterDocument | HomepageDocument
 
 declare module '@prismicio/client' {
   interface CreateClient {
@@ -206,6 +259,8 @@ declare module '@prismicio/client' {
       ArchiveDocument,
       ArchiveDocumentData,
       ArchiveDocumentDataPotpotpotItem,
+      FooterDocument,
+      FooterDocumentData,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataProductsItem,

@@ -1,15 +1,15 @@
 import { PotsList } from '@/components/PotsList'
 import { createClient } from '@/prismicio'
 import { Pot } from '@/types'
-import { asLink } from '@prismicio/client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Brand } from '@/components/Brand'
 
 export default async function Home() {
   const client = createClient()
 
   const page = await client.getSingle('homepage')
-  const { facebook, hero, instagram, products, website } = page.data
+  const { hero, products } = page.data
   const pots: Pot[] = products.map(({ image, name, price }) => ({
     image: image as Pot['image'],
     name: name as Pot['name'],
@@ -34,30 +34,13 @@ export default async function Home() {
       </div>
 
       <div className="p-4">
-        <div className="text-center mb-24">
-          <div>PotPotPottery</div>
-          <div className="text-stone">Potteries by Leonardo Romano</div>
-        </div>
+        <Brand />
 
         <PotsList pots={pots} />
 
         <Link href="/archive">
           <div className="text-center my-4 hover-items">Discover all</div>
-          {/* <div className="text-center my-4 bg-transparent hover:bg-gray-50 transition-all duration-300">Discover all</div> */}
         </Link>
-        <footer className="flex justify-between my-4">
-          <a href={asLink(website) as string} target="_blank">
-            PotPotPottery
-          </a>
-          <div className="text-stone flex gap-5">
-            <a href={asLink(instagram) as string} target="_blank">
-              Instagram
-            </a>
-            <a href={asLink(facebook) as string} target="_blank">
-              Facebook
-            </a>
-          </div>
-        </footer>
       </div>
     </div>
   )
