@@ -12,10 +12,10 @@
           "label": "UID"
         }
       },
-      "potpotpot": {
+      "products": {
         "type": "Group",
         "config": {
-          "label": "potpotpot",
+          "label": "products",
           "repeat": true,
           "fields": {
             "name": {

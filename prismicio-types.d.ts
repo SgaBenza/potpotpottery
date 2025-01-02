@@ -5,35 +5,35 @@ import type * as prismic from '@prismicio/client'
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
 /**
- * Item in *archive → potpotpot*
+ * Item in *archive → products*
  */
-export interface ArchiveDocumentDataPotpotpotItem {
+export interface ArchiveDocumentDataProductsItem {
   /**
-   * name field in *archive → potpotpot*
+   * name field in *archive → products*
    *
    * - **Field Type**: Text
    * - **Placeholder**: name
-   * - **API ID Path**: archive.potpotpot[].name
+   * - **API ID Path**: archive.products[].name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField
 
   /**
-   * price field in *archive → potpotpot*
+   * price field in *archive → products*
    *
    * - **Field Type**: Number
    * - **Placeholder**: price
-   * - **API ID Path**: archive.potpotpot[].price
+   * - **API ID Path**: archive.products[].price
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   price: prismic.NumberField
 
   /**
-   * image field in *archive → potpotpot*
+   * image field in *archive → products*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: archive.potpotpot[].image
+   * - **API ID Path**: archive.products[].image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>
@@ -44,15 +44,15 @@ export interface ArchiveDocumentDataPotpotpotItem {
  */
 interface ArchiveDocumentData {
   /**
-   * potpotpot field in *archive*
+   * products field in *archive*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: archive.potpotpot[]
+   * - **API ID Path**: archive.products[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  potpotpot: prismic.GroupField<Simplify<ArchiveDocumentDataPotpotpotItem>>
+  products: prismic.GroupField<Simplify<ArchiveDocumentDataProductsItem>>
 }
 
 /**
@@ -258,7 +258,7 @@ declare module '@prismicio/client' {
     export type {
       ArchiveDocument,
       ArchiveDocumentData,
-      ArchiveDocumentDataPotpotpotItem,
+      ArchiveDocumentDataProductsItem,
       FooterDocument,
       FooterDocumentData,
       HomepageDocument,

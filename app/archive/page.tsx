@@ -5,7 +5,7 @@ import { Pot } from '@/types'
 
 export default async function Archive() {
   const client = createClient()
-  const page = await client.getSingle('homepage')
+  const page = await client.getSingle('archive')
 
   const { products } = page.data
   const pots: Pot[] = products.map(({ image, name, price }) => ({
