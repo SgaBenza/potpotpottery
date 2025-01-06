@@ -21,14 +21,18 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+  single,
+}: {
   children: React.ReactNode
-}>) {
+  single: React.ReactNode
+}) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        {single}
         <PrismicPreview repositoryName={repositoryName} />
+        <div id="modal-root"></div>
       </body>
     </html>
   )
