@@ -4,6 +4,7 @@ import { Pot } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Brand } from '@/components/Brand'
+import { Footer } from '@/components/Footer'
 
 export default async function Home() {
   const client = createClient()
@@ -19,7 +20,7 @@ export default async function Home() {
   }))
 
   return (
-    <div>
+    <>
       <div className="bg-gray-300 mb-4 w-full h-[654px]">
         <Image
           className="object-cover"
@@ -44,6 +45,7 @@ export default async function Home() {
           <div className="text-center my-4 hover-items">Discover all</div>
         </Link>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }

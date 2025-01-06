@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { PrismicPreview } from '@prismicio/next'
-import { createClient, repositoryName } from '@/prismicio'
+import { repositoryName } from '@/prismicio'
 import './globals.css'
-import { Footer } from '@/components/Footer'
-import { asLink } from '@prismicio/client'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -24,22 +22,13 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode,
+  children: React.ReactNode
 }>) {
-  const client = createClient()
-
-  const page = await client.getSingle('footer')
-  const { facebook, instagram, website } = page.data
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
-        <Footer
-          website={asLink(website) as string}
-          instagram={asLink(instagram) as string}
-          facebook={asLink(facebook) as string}
-        />
       </body>
     </html>
   )
