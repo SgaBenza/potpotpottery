@@ -9,8 +9,10 @@ export default async function Home() {
   const client = createClient()
 
   const page = await client.getSingle('homepage')
-  const { hero, products } = page.data
-  const pots: Pot[] = products.map(({ image, name, price }) => ({
+  const products = await client.getByType('products', { pageSize: 3, page: 2 })
+
+  const { hero } = page.data
+  const pots: Pot[] = products.results.map(({ data: { image, name, price } }) => ({
     image: image as Pot['image'],
     name: name as Pot['name'],
     price: price as Pot['price'],

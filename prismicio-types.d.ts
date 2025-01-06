@@ -5,72 +5,6 @@ import type * as prismic from '@prismicio/client'
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
 /**
- * Item in *archive → products*
- */
-export interface ArchiveDocumentDataProductsItem {
-  /**
-   * name field in *archive → products*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: name
-   * - **API ID Path**: archive.products[].name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  name: prismic.KeyTextField
-
-  /**
-   * price field in *archive → products*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: price
-   * - **API ID Path**: archive.products[].price
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  price: prismic.NumberField
-
-  /**
-   * image field in *archive → products*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: archive.products[].image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>
-}
-
-/**
- * Content for archive documents
- */
-interface ArchiveDocumentData {
-  /**
-   * products field in *archive*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: archive.products[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  products: prismic.GroupField<Simplify<ArchiveDocumentDataProductsItem>>
-}
-
-/**
- * archive document from Prismic
- *
- * - **API ID**: `archive`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ArchiveDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-  Simplify<ArchiveDocumentData>,
-  'archive',
-  Lang
->
-
-/**
  * Content for footer documents
  */
 interface FooterDocumentData {
@@ -124,41 +58,6 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
 >
 
 /**
- * Item in *homepage → products*
- */
-export interface HomepageDocumentDataProductsItem {
-  /**
-   * image field in *homepage → products*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.products[].image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>
-
-  /**
-   * name field in *homepage → products*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.products[].name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  name: prismic.KeyTextField
-
-  /**
-   * price field in *homepage → products*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.products[].price
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  price: prismic.NumberField
-}
-
-/**
  * Content for homepage documents
  */
 interface HomepageDocumentData {
@@ -172,17 +71,6 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hero: prismic.ImageField<never>
-
-  /**
-   * products field in *homepage*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.products[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  products: prismic.GroupField<Simplify<HomepageDocumentDataProductsItem>>
 
   /**
    * website field in *homepage*
@@ -233,7 +121,60 @@ export type HomepageDocument<Lang extends string = string> = prismic.PrismicDocu
   Lang
 >
 
-export type AllDocumentTypes = ArchiveDocument | FooterDocument | HomepageDocument
+/**
+ * Content for products documents
+ */
+interface ProductsDocumentData {
+  /**
+   * image field in *products*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * name field in *products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * price field in *products*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: products.price
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  price: prismic.NumberField
+}
+
+/**
+ * products document from Prismic
+ *
+ * - **API ID**: `products`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+  Simplify<ProductsDocumentData>,
+  'products',
+  Lang
+>
+
+export type AllDocumentTypes = FooterDocument | HomepageDocument | ProductsDocument
 
 declare module '@prismicio/client' {
   interface CreateClient {
@@ -256,14 +197,12 @@ declare module '@prismicio/client' {
 
   namespace Content {
     export type {
-      ArchiveDocument,
-      ArchiveDocumentData,
-      ArchiveDocumentDataProductsItem,
       FooterDocument,
       FooterDocumentData,
       HomepageDocument,
       HomepageDocumentData,
-      HomepageDocumentDataProductsItem,
+      ProductsDocument,
+      ProductsDocumentData,
       AllDocumentTypes,
     }
   }

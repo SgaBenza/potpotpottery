@@ -1,0 +1,39 @@
+{
+  "format": "custom",
+  "id": "products",
+  "label": "products",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "name",
+          "placeholder": ""
+        }
+      },
+      "price": {
+        "type": "Number",
+        "config": {
+          "label": "price",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
