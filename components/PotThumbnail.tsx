@@ -7,7 +7,7 @@ export const PotThumbnail = ({ image, name, price }: Pot) => {
     <div className="relative h-[634px] w-[453px] hover-items">
       <Image
         src={image.url ?? ''}
-        alt="HERO PICTURE"
+        alt="pot image"
         width={453}
         height={453}
         style={{ maxHeight: 453, objectFit: 'cover' }}
