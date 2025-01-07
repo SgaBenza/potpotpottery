@@ -14,19 +14,29 @@ export interface SinglePotProps {
 export const SinglePot = ({ name, price, imageUrl = '' }: SinglePotProps) => {
   const [translateY, setTrnaslateY] = useState('translate-y-full')
   const router = useRouter()
+
+  let exitIndex: NodeJS.Timeout
   const onClose = () => {
-    router.back()
+    setTrnaslateY('translate-y-full')
+    exitIndex = setTimeout(() => {
+      router.back()
+    }, 300)
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const entryIndex = setTimeout(() => {
       setTrnaslateY('translate-y-0')
     }, 0)
+
+    return () => {
+      clearTimeout(entryIndex)
+      clearTimeout(exitIndex)
+    }
   }, [])
 
   return (
     <div
-      className={`bg-white h-svh p-4 flex justify-between ${translateY} trans transition-all duration-500`}
+      className={`bg-white h-svh p-4 flex justify-between ${translateY} transition-all duration-300`}
       style={{ transform: 'translateY()' }}
     >
       <div className="flex items-end">{name}</div>
