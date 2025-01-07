@@ -8,7 +8,7 @@ export const SingleModal = async ({ uid }: { uid: string }) => {
   const { image, name, price } = page.data
   return (
     <Modal>
-      <div style={{ height: '100vh', width: '100vw' }}>
+      <div className='w-dvw h-dvh'>
         <SinglePot name={name as string} price={price as number} imageUrl={image.url ?? ''} />
       </div>
     </Modal>
