@@ -1,9 +1,9 @@
 'use client'
 
+import { useTranslateY } from '@/hooks/styleHooks'
 import { formatPrice } from '@/utils/format'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
 
 export interface SinglePotProps {
   name: string
@@ -13,26 +13,18 @@ export interface SinglePotProps {
 
 export const SinglePot = ({ name, price, imageUrl = '' }: SinglePotProps) => {
   const router = useRouter()
-  const [translateY, setTrnaslateY] = useState('translate-y-full')
+  const [translateY, setTrnaslateY] = useTranslateY('translate-y-full', 'translate-y-0')
 
-  let exitIndex: NodeJS.Timeout
   const onClose = () => {
     setTrnaslateY('translate-y-full')
-    exitIndex = setTimeout(() => {
+    const exitIndex = setTimeout(() => {
       router.back()
     }, 300)
-  }
-
-  useEffect(() => {
-    const entryIndex = setTimeout(() => {
-      setTrnaslateY('translate-y-0')
-    }, 0)
 
     return () => {
-      clearTimeout(entryIndex)
       clearTimeout(exitIndex)
     }
-  }, [])
+  }
 
   return (
     <div
