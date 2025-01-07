@@ -7,7 +7,7 @@ export const Footer = async () => {
   const page = await client.getSingle('footer')
   const { facebook, instagram, website } = page.data
   return (
-    <footer className="flex justify-between m-4 pt-32">
+    <footer className="xl:flex justify-between m-4 pt-32">
       <a href={asLink(website) as string} target="_blank">
         PotPotPottery
       </a>

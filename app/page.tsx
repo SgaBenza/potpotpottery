@@ -20,8 +20,8 @@ export default async function Home() {
   }))
 
   return (
-    <>
-      <div className="bg-gray-300 mb-4 w-full h-[654px]">
+    <div className='flex flex-col justify-between h-screen xl:block'>
+      <div className="bg-gray-300 mb-4 w-full xl:h-[654px]">
         <Image
           className="object-cover"
           src={hero.url ?? ''}
@@ -46,6 +46,6 @@ export default async function Home() {
         </Link>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
